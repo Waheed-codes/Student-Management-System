@@ -18,7 +18,8 @@ router.post("/register", async (req, res) => {
             email,
             password: await bcrypt.hash(password, 10),
             age,
-            gender
+            gender,
+            
         };
         let response = await studentModel.create(newStudent);
         res.status(201).json({ message: "Student created successfully", response });

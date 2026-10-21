@@ -46,11 +46,12 @@ const studentSchema= new mongoose.Schema({
     },
     status:{
         type:String,
-        enum:["active","inactive","Graduated"]
+        enum:["active","inactive","Graduated"],
+        default:"active"
     }
 
 }, {timestamps:true})
 
-let StudentModel= mongoose.model("student",studentSchema)
+let StudentModel= mongoose.model("Student",studentSchema)
 
 export default StudentModel

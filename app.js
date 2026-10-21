@@ -7,6 +7,7 @@ import authMiddleware from "./middleware/auth.js";
 import privateStudentRouter from "./controllers/private/student.js";
 import publicCourseRouter from "./controllers/public/course.js";
 import privateCourseRouter from "./controllers/private/course.js";
+import privateEnrollment from "./controllers/private/enrollment.js"
 
 // console.log(process.env.PORT);
 // what is process?
@@ -32,7 +33,7 @@ app.use("/public-course", publicCourseRouter);
 app.use(authMiddleware);
 app.use("/private-student", privateStudentRouter);
 app.use("/private-course", privateCourseRouter);
-
+app.use("/private-enrollment",privateEnrollment)
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
