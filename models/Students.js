@@ -52,6 +52,6 @@ const studentSchema= new mongoose.Schema({
 
 }, {timestamps:true})
 
-let StudentModel= mongoose.model("Student",studentSchema)
+let studentModel= mongoose.model("Student",studentSchema)
 
-export default StudentModel
+export default studentModel

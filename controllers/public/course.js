@@ -55,4 +55,30 @@ router.get("/course/:code", async (req, res) => {
   }
 });
 
+// GET COURSE BY INSTRUCTOR
+router.get("/instructor/:name", async (req, res) => {
+  try {
+    const name = req.params.name;
+
+    const courses = await courseModel.find({
+      instructor: name,
+    });
+
+    if (courses.length === 0) {
+      return res.status(404).json({
+        message: "No courses found for this instructor",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Courses fetched successfully",
+      courses,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal server error",
+      error: error.message,
+    });
+  }
+});
 export default router;

@@ -2,10 +2,11 @@ import express from "express";
 import studentModel from "../../models/Students.js"
 import bcrypt from "bcrypt";
 import tokenize from "../../utils/token.js";
+import { loginValidator, registerValidator, validation } from "../../validators/studentValidator.js";
 
 const router = express.Router();
 
-router.post("/register", async (req, res) => {
+router.post("/register", registerValidator, validation, async (req, res) => {
     try {
         let { name, rollNumber, email, password, age, gender } = req.body;
         let checkIfExists = await studentModel.findOne({ email: email });
@@ -29,7 +30,7 @@ router.post("/register", async (req, res) => {
     }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login",loginValidator,validation, async (req, res) => {
     try {
         let { email, password } = req.body;
         let checkIfExists = await studentModel.findOne({ email: email });
@@ -50,5 +51,6 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 })
+
 
 export default router;
