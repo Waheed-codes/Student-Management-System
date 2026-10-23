@@ -138,6 +138,7 @@ router.patch("/change-password", changePasswordStudentValidator,validation, asyn
         })
     }
 })
+
 //Get all courses of a specific user if logged in
 router.get("/my-courses", async (req, res) => {
     try {

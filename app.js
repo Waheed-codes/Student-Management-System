@@ -8,6 +8,9 @@ import privateStudentRouter from "./controllers/private/student.js";
 import publicCourseRouter from "./controllers/public/course.js";
 import privateCourseRouter from "./controllers/private/course.js";
 import privateEnrollment from "./controllers/private/enrollment.js"
+import publicAggregate from "./controllers/public/aggregate.js"
+import privateAggregate from "./controllers/private/aggregate.js"
+
 
 // console.log(process.env.PORT);
 // what is process?
@@ -30,7 +33,9 @@ app.get("/health", (req, res) => {
 
 app.use("/public-student", publicStudentRouter);
 app.use("/public-course", publicCourseRouter);
+app.use("/public-aggregate",publicAggregate),
 app.use(authMiddleware);
+app.use("/private-aggregate",privateAggregate);
 app.use("/private-student", privateStudentRouter);
 app.use("/private-course", privateCourseRouter);
 app.use("/private-enrollment",privateEnrollment)
