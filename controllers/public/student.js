@@ -26,7 +26,7 @@ router.post("/register", registerValidator, validation, async (req, res) => {
         res.status(201).json({ message: "Student created successfully", response });
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({ message: "Internal Server Error", error: error.message });
+        res.status(500).json({ message: "Internal Server Error"});
     }
 });
 
